@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("products")
@@ -46,5 +45,19 @@ public class ProductController {
     public String getProductById(@RequestParam("id") String productId, Model model) {
         model.addAttribute("product", productService.getProductById(productId));
         return "product";
+    }
+
+    @RequestMapping("/{category}/{price}")
+    public String filterProducts(@PathVariable("category") String productCategory,
+                                 @MatrixVariable(pathVar = "price")
+                                 Map<String, String> priceRange,
+                                 @RequestParam("manufacturer") String manufacturer,
+                                 Model model)
+    {
+        Set<Product> products = new HashSet<> ();
+        model.addAttribute("products", productService.getProductsByPriceFilter(
+                priceRange, manufacturer, productCategory)
+        );
+        return "products";
     }
 }
