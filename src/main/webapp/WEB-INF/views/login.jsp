@@ -34,10 +34,10 @@
                     <form action="<c:url value="/j_spring_security_check"></c:url>" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Nazwa użytkownika" name='j_username' type="text">
+                                <input class="form-control" placeholder="Nazwa użytkownika" name='name' type="text">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Hasło" name='j_password' type="password" value="">
+                                <input class="form-control" placeholder="Hasło" name='pass' type="password">
                             </div>
                             <input class="btn btn-lg btn-success btn-block" type="submit" value="Zaloguj się">
                         </fieldset>
